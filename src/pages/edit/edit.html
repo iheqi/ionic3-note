@@ -1,0 +1,13 @@
+
+<ion-header>
+  <div>
+    <button ion-button clear navPop class="btn">取消</button>
+    <button ion-button clear navPop class="btn" (click)="save()">保存</button>
+  </div>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-input placeholder="输入标题" [(ngModel)]="title"></ion-input>
+    <textarea placeholder="输入内容" [(ngModel)]="msg"></textarea>
+</ion-content>

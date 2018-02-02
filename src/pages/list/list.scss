@@ -1,0 +1,21 @@
+page-list {
+    ion-fab button {
+        background: rgb(150, 69, 2) !important
+    }
+
+    ion-navbar, ion-header {
+        background: rgb(240, 122, 26) !important
+    }
+
+    #menuBtn {
+        color: black;
+        font-weight: 1000;
+        font-size: 2rem;
+    }
+
+    .listItem {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 5px;
+    } 
+}

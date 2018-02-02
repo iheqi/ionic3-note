@@ -1,0 +1,7 @@
+<ion-content class="content" [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+    <div>
+        <ion-input type="password" placeholder="输入密码" [(ngModel)]="password"></ion-input>
+
+        <button ion-button class="login-button" full color="dark" (click)="login()">确认</button>
+      </div>
+  </ion-content>

@@ -1,0 +1,31 @@
+
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>管理列表</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item-sliding *ngFor="let list of lists">
+        <ion-item>
+          {{list.name}}
+        </ion-item>
+
+        <ion-item-options>
+            <button ion-button color="light" (click)="renameList(list)">
+              <ion-icon name="clipboard"></ion-icon> 
+              编辑
+            </button>
+    
+            <button ion-button color="danger" (click)="removeList(list)">
+              <ion-icon name="trash"></ion-icon> 
+              删除
+            </button>
+          </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+</ion-content>

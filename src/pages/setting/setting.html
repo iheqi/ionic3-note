@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>设置</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+          <ion-label>加密</ion-label>
+          <ion-toggle (ionChange)="toggleSet()" [(ngModel)]="isLocked" color="danger"></ion-toggle>
+        </ion-item>
+
+        <ion-item (click)="setPassword()" *ngIf="isLocked">
+          设置密码
+        </ion-item>
+    </ion-list>
+</ion-content>

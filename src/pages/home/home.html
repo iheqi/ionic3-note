@@ -1,0 +1,49 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-fab bottom right (click)="goEdit()">
+    <button ion-fab color="primary">
+      <ion-icon name="add"></ion-icon>  
+    </button>  
+  </ion-fab>
+    
+  <h3  *ngIf="nothing">无备忘录</h3>
+
+  <ion-list>
+      <ion-item-sliding *ngFor="let item of items" (click)="itemTapped(item)">
+        <ion-item>
+          {{item.title}}
+          <div item-end>
+              {{item.date}}
+          </div>
+        </ion-item>
+
+        <ion-item-options side="left">
+            <button ion-button color="light">
+              <ion-icon name="clipboard"></ion-icon> 
+              编辑
+            </button>
+    
+            <button ion-button color="danger">
+              <ion-icon name="trash"></ion-icon> 
+              删除
+            </button>
+    
+          </ion-item-options>
+      </ion-item-sliding>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <div item-end>
+        {{item.date}}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>
+ -->

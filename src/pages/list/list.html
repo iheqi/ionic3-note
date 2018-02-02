@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="!isEmpty">
+      <ion-item no-lines>
+          {{list.name}}
+          <span item-end>共 {{list.items.length}} 项</span>
+      </ion-item>
+      
+    </ion-title>
+
+    <ion-title *ngIf="isEmpty">无列表或未打开列表</ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding *ngIf="!isEmpty">
+    <ion-fab bottom right (click)="goEditPage()">
+      <button ion-fab>
+        <ion-icon name="add"></ion-icon>  
+      </button>  
+    </ion-fab>
+
+  <ion-list no-lines>
+      <ion-item-sliding *ngFor="let item of list.items" (click)="itemTapped(item)" class="listItem">
+          <ion-item>
+            {{item.title}}
+            <div item-end>
+                {{item.date | date: "M月dd日HH时"}}
+            </div>
+          </ion-item>
+  
+          <ion-item-options>
+              <button ion-button color="light">
+                <ion-icon name="clipboard"></ion-icon> 
+                编辑
+              </button>
+      
+              <button ion-button color="danger" (click)="removeItem(item)">
+                <ion-icon name="trash"></ion-icon> 
+                删除
+              </button>
+      
+            </ion-item-options>
+        </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
+
+<ion-content *ngIf="isEmpty">
+  <button ion-button menuToggle full clear id="menuBtn" color="dark">打开列表菜单</button>
+</ion-content>

@@ -1,0 +1,25 @@
+page-edit {
+    div {
+        display: flex;
+        justify-content: space-between
+    }
+    div button, .btn {
+        font-weight: 600;
+        color: black;
+    }
+    textarea {
+        padding: 1rem;
+        height: 90%;
+        width: 100%;
+        resize: none;
+        margin-top: 1rem;
+    }
+
+    ion-input,textarea {
+        background: white;
+    }
+
+    ion-input {
+        height: 4rem;
+    }
+}
