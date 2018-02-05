@@ -19,7 +19,7 @@ export class MyApp {
   @ViewChild("content") navCtrl: NavController;
   rootPage: any;
   lists: ListModel[] = [];
-  initApp;
+  //initApp;
   constructor(public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
@@ -37,9 +37,10 @@ export class MyApp {
         this.initializeApp();     
       });
 
-      MyApp.prototype.initApp = this.initializeApp.bind(this);
+      //MyApp.prototype.initApp = this.initializeApp.bind(this);
       events.subscribe('list:deleted', () => {
-        MyApp.prototype.initApp();
+        //MyApp.prototype.initApp();
+        this.initializeApp();
       });
   }
 

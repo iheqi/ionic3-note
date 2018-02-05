@@ -48,8 +48,26 @@ export class ListPage {
 /*   toggleItem(item) {
     this.list.toggleItem(item);
   }  */
-  removeItem(item) {
-    this.list.removeItem(item);
+  removeItem(item,i) {
+    let prompt = this.alertCtrl.create({
+      title: '确定删除这一项？',
+      message: '这将无法找回',
+      buttons: [{
+        text: '取消'
+      },
+      {
+        text: '确定',
+        handler: () => {
+          let itemEle = document.getElementById(i.toString());
+          itemEle.className = 'myHide';
+          setTimeout(() => {
+            this.list.removeItem(item)
+          },400)
+          
+        }
+      }]
+    });
+    prompt.present();
   } 
   renameItem(item) {
     let prompt = this.alertCtrl.create({

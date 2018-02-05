@@ -18,4 +18,21 @@ page-list {
         font-weight: bold;
         margin-bottom: 5px;
     } 
+
+    .myShow{
+        animation: myshow 0.4s ease-in-out forwards;
+    }
+    .myHide{
+        animation: myhide 0.4s ease-in-out forwards;
+    }
+    @keyframes myshow
+    {
+        from { transform: translateX(-100%); }
+        to { transform: none; }
+    }
+    @keyframes myhide
+    {
+        from { -webkit-transform: none; }
+        to { -webkit-transform: translateX(100%) }
+    }
 }

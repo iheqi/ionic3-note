@@ -24,7 +24,7 @@
     </ion-fab>
 
   <ion-list no-lines>
-      <ion-item-sliding *ngFor="let item of list.items" (click)="itemTapped(item)" class="listItem">
+      <ion-item-sliding *ngFor="let item of list.items; let i=index" class="listItem" id={{i}}>
           <ion-item>
             {{item.title}}
             <div item-end>
@@ -33,12 +33,12 @@
           </ion-item>
   
           <ion-item-options>
-              <button ion-button color="light">
+              <button ion-button color="light" (click)="itemTapped(item)" >
                 <ion-icon name="clipboard"></ion-icon> 
                 编辑
               </button>
       
-              <button ion-button color="danger" (click)="removeItem(item)">
+              <button ion-button color="danger" (click)="removeItem(item,i)">
                 <ion-icon name="trash"></ion-icon> 
                 删除
               </button>
