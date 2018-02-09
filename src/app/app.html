@@ -16,7 +16,7 @@
 
   <ion-content>
     <ion-list no-lines>
-      <button ion-item (click)="openPage(list)" *ngFor="let list of lists" menuClose class="item">
+      <button ion-item (click)="openPage(list,i)" id="id{{i}}" *ngFor="let list of lists; let i=index" menuClose>
           {{list.name}}
         <span item-end>共 {{list.items.length}} 项</span>
       </button>

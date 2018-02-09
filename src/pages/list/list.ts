@@ -7,12 +7,11 @@ import { ItemSliding } from 'ionic-angular';
 })
 export class ListPage {
   @ViewChild(ItemSliding) sliding: ItemSliding;
-  list: any;
+  list;
   isEmpty: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl: AlertController) { 
       this.list = this.navParams.get('list');
-
       if(typeof(this.list) != "undefined") {
         this.isEmpty = false;
       }

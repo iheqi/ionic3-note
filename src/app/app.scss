@@ -19,10 +19,15 @@ ion-content, ion-header, ion-navbar, ion-toolbar {
     background-color: rgb(245, 141, 56) !important;
 }
 
-
-
 .item {
     background-color: #252323;
     color: aliceblue
 }
+
+.checkedItem {
+    background-color: #252323;
+    color: rgb(245, 141, 56)
+}
+
+
 

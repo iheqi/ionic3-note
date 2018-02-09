@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ListModel } from '../models/list.model';
 
-import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 
 
 import { Events } from 'ionic-angular';
@@ -19,6 +19,7 @@ export class MyApp {
   @ViewChild("content") navCtrl: NavController;
   rootPage: any;
   lists: ListModel[] = [];
+  j: string;
   //initApp;
   constructor(public platform: Platform, 
     public statusBar: StatusBar, 
@@ -31,21 +32,23 @@ export class MyApp {
       this.storage.get('isLocked').then((val) => {
         if(val) {
           this.rootPage = 'LoginPage';
+          this.initializeApp(false);
+          
         } else {
-          this.rootPage = HomePage;
+          this.initializeApp(true);
         }
-        this.initializeApp();     
       });
 
       //MyApp.prototype.initApp = this.initializeApp.bind(this);
       events.subscribe('list:deleted', () => {
         //MyApp.prototype.initApp();
-        this.initializeApp();
+        this.initializeApp(true);
+        
       });
   }
 
   
-  initializeApp() {
+  initializeApp(ifTab: boolean) {
     this.lists = [];
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -66,18 +69,33 @@ export class MyApp {
             });
           });
         }
-        console.log(this.lists);
-        this.navCtrl.setRoot(ListPage, {
-          list: this.lists[0]
-        });
+        if(ifTab) {
+          this.navCtrl.setRoot(ListPage, {
+            list: this.lists[0]
+          });
+        }
       });
     });
   }
 
-  openPage(list) {
+  openPage(list,i) {
+    // 避免与list的id重复
+    let id = "id" + i.toString();
+
+    if (typeof(this.j) != "undefined") {
+      let ele = document.getElementById(this.j);
+      if(ele !== null) {
+  		  ele.style.cssText = "color: aliceblue";
+      }
+    }
+    let ele = document.getElementById(id);
+    console.log(ele)
+    ele.style.cssText = "color: rgb(245, 141, 56)";
     this.navCtrl.setRoot(ListPage, {
       list: list
     });
+
+    this.j = id;
   }
 
   addList() {
@@ -92,13 +110,28 @@ export class MyApp {
       },
       {
         text: '保存',
-        handler: data => {
-          let newList = new ListModel(data.name, []);
-          this.lists.push(newList);
-          newList.list.subscribe(update => {
+        handler: (data) => {
+          if(data.name.trim() == "") {
+            let prompt = this.alertCtrl.create({
+              title: '列表名不能为空哦',
+              buttons: [{
+                text: "好的",
+                handler: () => {
+                  this.addList();
+                }
+              }]
+            });
+            prompt.present();
+            
+          } else {
+            
+            let newList = new ListModel(data.name, []);
+            this.lists.push(newList);
+            newList.list.subscribe(update => {
+              this.dataProvider.save(this.lists);
+            });
             this.dataProvider.save(this.lists);
-          });
-          this.dataProvider.save(this.lists);
+          }
         }
       }]
     });

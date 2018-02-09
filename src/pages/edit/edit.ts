@@ -1,6 +1,6 @@
 import { ListModel } from './../../models/list.model';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 
 @IonicPage()
@@ -17,6 +17,7 @@ export class EditPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public alertCtrl: AlertController
     ) {
       this.list = navParams.get('list');
       this.item = navParams.get('item');
@@ -32,10 +33,23 @@ export class EditPage {
     }
   }
   save() {
-    if(typeof(this.item) != 'undefined' || this.item != null) {
-      this.list.setItem(this.item,this.title,this.msg);
-    } else {
-      this.list.addItem(this.title,this.msg);
-    }
+    if(typeof(this.title) != "undefined") {
+      
+      if(this.title.trim() != "") {
+        if(typeof(this.item) != 'undefined' && this.item != null) {
+          this.list.setItem(this.item,this.title,this.msg);
+        } else {
+          this.list.addItem(this.title,this.msg);
+        }
+      } else {
+        let prompt = this.alertCtrl.create({
+          title: '标题不可以为空哦!',
+          buttons: [{
+            text: '确定'
+          }]
+        });
+        prompt.present();
+      }
+    } 
   }
 }
