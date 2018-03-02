@@ -29,6 +29,7 @@ export class MyApp {
     public menuCtrl: MenuController,
     public events: Events, public storage: Storage
   ) {
+      this.statusBar.backgroundColorByName("darkGray");
       this.storage.get('isLocked').then((val) => {
         if(val) {
           this.rootPage = 'LoginPage';
@@ -48,7 +49,7 @@ export class MyApp {
   }
 
   
-  initializeApp(ifTab: boolean) {
+  initializeApp(ifTap: boolean) {
     this.lists = [];
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -69,7 +70,7 @@ export class MyApp {
             });
           });
         }
-        if(ifTab) {
+        if(ifTap) {
           this.navCtrl.setRoot(ListPage, {
             list: this.lists[0]
           });
@@ -89,7 +90,6 @@ export class MyApp {
       }
     }
     let ele = document.getElementById(id);
-    console.log(ele)
     ele.style.cssText = "color: rgb(245, 141, 56)";
     this.navCtrl.setRoot(ListPage, {
       list: list
