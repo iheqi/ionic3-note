@@ -1,5 +1,5 @@
 import { ListModel } from './../../models/list.model';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 
@@ -9,6 +9,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
   templateUrl: 'edit.html',
 })
 export class EditPage {
+  @ViewChild('input') input;
   list: any;
   item: any;
 
@@ -21,7 +22,7 @@ export class EditPage {
     ) {
       this.list = navParams.get('list');
       this.item = navParams.get('item');
-
+     
   }
 
   ionViewDidLoad() {
@@ -31,6 +32,8 @@ export class EditPage {
       this.title = this.item.title;
       this.msg = this.item.msg;
     }
+    //const input = document.getElementById('title');
+    this.input.setFocus();
   }
   save() {
     if(typeof(this.title) != "undefined") {

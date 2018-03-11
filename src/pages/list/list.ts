@@ -25,28 +25,6 @@ export class ListPage {
     this.sliding.close();
   }
 
-/*   addItem() {
-    let prompt = this.alertCtrl.create({
-      title: '增加item',
-      message: '输入任务:',
-      inputs: [{
-        name: 'name'
-      }],
-      buttons: [{
-        text: '取消'
-      },
-      {
-        text: '保存',
-        handler: data => {
-          this.checklist.addItem(data.name);
-        }
-      }]
-    });
-    prompt.present();
-  }  */
-/*   toggleItem(item) {
-    this.list.toggleItem(item);
-  }  */
   removeItem(item,i) {
     let prompt = this.alertCtrl.create({
       title: '确定删除这一项？',
@@ -62,7 +40,6 @@ export class ListPage {
           setTimeout(() => {
             this.list.removeItem(item)
           },400)
-          
         }
       }]
     });
@@ -87,13 +64,6 @@ export class ListPage {
     });
     prompt.present();
   } 
-/*   unItems() {
-    this.list.items.forEach((item) => {
-      if(item.checked){     // 将已经勾选的取消勾选
-        this.list.toggleItem(item);
-      }
-    });
-  } */
 
   goEditPage() {
     this.navCtrl.push('EditPage',{
